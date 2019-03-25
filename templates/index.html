@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>URDU OCR</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
+    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+  	<link rel="stylesheet" href="{{ url_for('static',filename='css/font.css')}}">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="text-align: center;"><h1 style="font-family: 'Forte';">URDU OCR</h1></div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row-fluid" style="margin-top: 50px;">
+          <form class="custom-form" action="/ocr" method="post" enctype="multipart/form-data">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="custom-file">
+                  <input type="file" id="file" class="custom-file-input" name="input_file" required>
+                  <span class="custom-file-control"></span>
+                </label>
+                </div>
+              </div>
+            <div class="col-sm-6 form-group">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-2"><button type="submit" class="btn btn-primary">
+                RUN OCR ON THIS IMAGE
+             </button></div>
+              <div class="col-md-2"></div>
+          </div>
+          </form>
+          </div>
+
+          <div class="row-fluid" style="margin-top: 50px">
+              <div class="col-md-12" style="text-align: center;"><h3 style="font-family: 'Forte';">HOW DOES IT WORK?</h3></div>
+          </div>
+          <div class="row-fluid" style="margin-top: 50px">
+              <div class="col-md-12" style="text-align: center;"><p style="font-family: 'Times New Roman'; font-size: 20px;">We have three model trained for detecting two urdu words which are, میں and اور. Due to it being in an initial phase the scanned document should be in a grid with each cell having height 76cm and width 111cm.</p>
+              <p style="font-family: 'Times New Roman'; font-size: 20px;">After the OCR is runned the model will put red box around the words that have probability of being میں higher than 98% and green box around the words that have probability of being اور higher than 98%.</p>
+              <p style="font-family: 'Times New Roman'; font-size: 20px;">The three models are unique in their own way that is, that one is can predict those two words and will identify all the images given to it as one of those two words. In the rest of the two models we tried to get rid of the non-classified images ie, in our case words other than میں and اور. These two models have its own advantages and disadvantages which can be seen after running them on the image you want to get detected with میں and اور. You can also see how our model works in a pretty basic manner by pressing the button bellow.</p></div>
+          </div>
+          <div class="row-fluid" style="margin-top: 50px;">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-2"><form class="custom-form" action="/sample">
+                  <button type="submit" class="btn btn-primary">
+                RUN OCR ON SAMPLE IMAGE
+             </button>
+                  </form></div>
+                  <div class="col-md-2"></div>
+              </div>
+              <div class="col-md-4"></div>
+          </div>
+</div>
+
+</body>
+</html>
